@@ -1,0 +1,165 @@
+/* Classes utilitaires */
+.italic{
+    font-style:italic;
+}
+.text-center{
+    text-align:center;
+}
+.text-left{
+    text-align: left;
+}
+.bold{
+    font-weight:bold;
+}
+.white{
+    color:white;
+}
+.dark{
+    color:black;
+}
+.underline{
+    text-decoration: underline;
+}
+.rounded{
+    border-radius:7px;
+}
+.underline-none{
+    text-decoration: none;
+}
+.d-flex{
+    display: flex;
+}
+.d-flex.space-between{
+    justify-content: space-between;
+
+}
+.mt-1{
+    margin-top: 5px;
+}
+.mt-2{
+    margin-top: 20px;
+}
+.mt-3{
+    margin-top: 35px;
+}
+.mt-6{
+    margin-top: 60px;
+}
+.mr-2{
+    margin-right: 25px;
+}
+.ml-2{
+    margin-left:25px;
+}
+.p-1{
+    padding:5px;
+}
+.p-2{
+    padding:15px;
+}
+.pt-2{
+    padding:10px;
+}
+.pt-3{
+    padding:30px;
+}
+.list-none{
+    list-style-type: none;
+}
+
+.pointer{
+    cursor:pointer;
+}
+.warning{
+    background-color: rgb(235, 235, 40);
+    color:black;
+    cursor:pointer;
+}
+.danger{
+    background-color: rgb(201, 8, 8);
+    color:white;
+    cursor:pointer;
+}
+.inline{
+    display: inline;
+    font-size: 0.9em;
+    padding:2px 4px;
+}
+.w-350{
+    width:350px;
+}
+/* définitions animations */
+.animate{
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+.animate-infinite{
+    animation-iteration-count: infinite;
+}
+.animation-delay-1{
+    animation-delay: 2s;
+}
+
+.animate-fast{
+    animation-duration: 3s;
+}
+.animate-slow{
+    animation-duration: 5s;
+}
+
+@keyframes slideInLeft {
+    from{
+        transform: translateX(-300px);
+    }
+    to{
+        transform: translateX(0);
+    }
+    
+}
+@keyframes slideInTop {
+
+    0%{
+        transform: translateY(-350px);
+    }
+    40%{
+        transform: translateY(0);
+    }
+    80%{
+        transform: translateY(-30px);
+    }
+    50%{
+        transform: translateY(0);
+    }
+   
+    60%{
+        transform: translateY(-15px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+    
+}
+
+.animation{
+    
+    animation: slideInTop 3s ease;    
+   
+ 
+}
+.slideInleft{
+    animation-name:slideInLeft;
+    animation-timing-function:ease-in;
+}
+
+.zoom:hover{
+    transform:scale(1.2);
+    transition-duration: 2s;
+    cursor:pointer;
+
+}
+.zoom-left:hover{
+    transform: scale(1.2) translateX(35px);
+    transition-duration: 2s;
+    cursor:pointer;
+}
+/* Transition property */
