@@ -3,9 +3,9 @@
         <h2 class="italic white underline">Liste des Options</h2>  
         <?php
             if(isset($_GET["suppression"])){
-                $message="Échec de l'enregistrement de l'option!";
+                $message="Suppression option effectuée avec succès!";
                 echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
-
+                unset($_GET["suppression"]);
             }
             // require("controllers/OptionController.php");
         ?>             
@@ -29,7 +29,7 @@
                     <td><?=$ligne["LibOption"]; ?></td>
                     <td>
                         <a href="Controllers/OptionController.php?DeleteId=<?= $ligne["IdOption"] ?>" class="danger inline rounded">Supprimer</a>
-                        <a href="index.php?page=updateOption#apropos&IdOption=<?= $ligne["IdOption"] ?>" class="warning inline rounded">Modifier</a>
+                        <a href="Controllers/OptionController.php?UpdateId=<?= $ligne["IdOption"] ?>" class="warning inline rounded">Modifier</a>
                     </td>
                 </tr>
                 <?php 

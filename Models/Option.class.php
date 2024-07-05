@@ -38,9 +38,13 @@ class Option {
 
         // Exécuter la requête et vérifier si elle réussit
         if ($stmt->execute()) {
-            echo "Option modifiée avec succès ! ID: " . $this->idOption . "\n";
+          
+            $message="Option modifiée avec succès ! ";
+            echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
         } else {
-            echo "Échec de la modification de l'option.\n";
+           
+            $message="Échec de la modification de l'option ";
+            echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
         }
     }
 
