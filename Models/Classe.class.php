@@ -33,20 +33,24 @@ class Classe {
     }
 
     // Methode modifier (Update)
-    public function modifier($connexion) {
+    public function modifier($connexion,$IdClasse) {
         // Préparer la requête SQL pour la mise à jour
-        $requete = "UPDATE Classe SET LibClasse = :libClasse WHERE IdClasse = :idClasse";
+        $requete = "UPDATE `classe` SET LibClasse = :libClasse WHERE IdClasse = :idClasse";
         $stmt = $connexion->prepare($requete);
 
         // Lier les paramètres avec les valeurs
-        $stmt->bindParam(':idClasse', $this->idClasse);
+        $stmt->bindParam(':idClasse', $IdClasse);
         $stmt->bindParam(':libClasse', $this->libClasse);
 
         // Exécuter la requête et vérifier si elle réussit
         if ($stmt->execute()) {
-            echo "Classe modifiée avec succès ! ID: " . $this->idClasse . "\n";
+
+            $message="Classe modifiée avec succès !";
+            echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
         } else {
-            echo "Échec de la modification de la classe.\n";
+           
+            $message="Échec de la modification de la classe!";
+            echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
         }
     }
 

@@ -43,6 +43,10 @@
                             require("Views/Insertions/formClasse.php"); //formulaire classe
                             require("Views/Tables/classeTable.php");
                         break;
+                        case "updateClasse":
+                            require("Views/Modification/updateClasse.php"); //formulaire modification
+                            require("Views/Tables/classeTable.php");
+                        break;
                         default:                        
                             require("Views/portions/about.php"); //apropos
                     
