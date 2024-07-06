@@ -11,7 +11,7 @@
                         <a href="index.php?page=option#apropos"><img src="assets/img/options.png" class="rounded" alt="home" width="20px"> Ajout Options</a>
                     </li>
                     <li>
-                        <a href="#apropos"><img src="assets/img/eleves.png" class="rounded" alt="home" width="20px"> Inscription Elèves</a>
+                        <a href="index.php?page=eleve#apropos"><img src="assets/img/eleves.png" class="rounded" alt="home" width="20px"> Inscription Elèves</a>
                     </li>
                 
                 </ul>

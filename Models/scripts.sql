@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `Eleve`(
     Prenom VARCHAR(20) NOT NULL,
     Genre CHAR(1) NOT NULL,
     Datenais Date,
-    Adresse VARCHAR(20) NOT NULL,
+    Adresse VARCHAR(50) NOT NULL,
     IdOption INT NOT NULL,
     IdClasse INT NOT NULL,
     FOREIGN KEY (IdClasse) REFERENCES `Classe`(IdClasse),

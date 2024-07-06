@@ -47,6 +47,10 @@
                             require("Views/Modification/updateClasse.php"); //formulaire modification
                             require("Views/Tables/classeTable.php");
                         break;
+                        case "eleve":
+                            require("Views/Insertions/formEleve.php"); //formulaire eleve
+                            require("Views/Tables/eleveTable.php");
+                        break;
                         default:                        
                             require("Views/portions/about.php"); //apropos
                     

@@ -17,7 +17,7 @@ class Eleve {
         $this->nom = $nom;
         $this->postnom = $postnom;
         $this->prenom = $prenom;
-        $this->prenom = $genre;
+        $this->genre = $genre;
         $this->datenais = $datenais;
         $this->adresse = $adresse;
         $this->idOption = $idOption;
@@ -29,7 +29,7 @@ class Eleve {
     // Methode enregistrer (Create)
     public function enregistrer($connexion) {
         // Préparer la requête SQL pour l'insertion
-        $requete = "INSERT INTO Eleve (Matricule, Nom, Postnom, Prenom,genre, Datenais, Adresse, IdOption, IdClasse) VALUES (:matricule, :nom, :postnom, :prenom,:genre, :datenais, :adresse, :idOption, :idClasse)";
+        $requete = "INSERT INTO `eleve` (Matricule, Nom, Postnom, Prenom,genre, Datenais, Adresse, IdOption, IdClasse) VALUES (:matricule, :nom, :postnom, :prenom,:genre, :datenais, :adresse, :idOption, :idClasse)";
         $stmt = $connexion->prepare($requete);
 
         // Lier les paramètres avec les valeurs
@@ -45,9 +45,11 @@ class Eleve {
 
         // Exécuter la requête et vérifier si elle réussit
         if ($stmt->execute()) {
-            echo "Elève enregistré avec succès ! Matricule: " . $this->matricule . "\n";
-        } else {
-            echo "Échec de l'enregistrement de l'élève.\n";
+            $message="Elève enregistré avec succès!";
+            echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
+        } else {           
+            $message="Échec de l'enregistrement de l'élève!";
+            echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
         }
     }    
         // Methode modifier (Update)

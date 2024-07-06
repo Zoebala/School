@@ -163,7 +163,7 @@ header{
 .section2{
     grid-area:section2;
     min-height: 300px;
-    max-height: 500px;
+    max-height: 420px;
     overflow-y: auto;
 }
 .article{

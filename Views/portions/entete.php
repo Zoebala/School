@@ -9,8 +9,10 @@
 </head>
 <body>
     <?php 
+        //inclusion des classes
         require("Models/Connexion.php"); 
         require("Models/Option.class.php");
         require("Models/Classe.class.php");
+        require("Models/Eleve.class.php");
     ?>
     <div class="container text-center">
