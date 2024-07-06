@@ -5,7 +5,7 @@
                 <ul class="list-none" id="Operations">
                 <span class="white underline bold italic">Nos Opérations</span> 
                     <li>
-                        <a href="#"><img src="assets/img/1051_home.png" class="rounded" alt="home" width="20px"> Ajout Classe</a>
+                        <a href="index.php?page=classe#apropos"><img src="assets/img/1051_home.png" class="rounded" alt="home" width="20px"> Ajout Classe</a>
                     </li>
                     <li>
                         <a href="index.php?page=option#apropos"><img src="assets/img/options.png" class="rounded" alt="home" width="20px"> Ajout Options</a>

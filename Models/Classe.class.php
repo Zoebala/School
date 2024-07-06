@@ -2,34 +2,18 @@
 
 class Classe {
 
-    private $idClasse;
+ 
     private $libClasse;
 
-    public function __construct($idClasse, $libClasse) {
-        $this->idClasse = $idClasse;
+    public function __construct($libClasse) {
         $this->libClasse = $libClasse;
     }
 
-    public function getIdClasse() {
-        return $this->idClasse;
-    }
-
-    public function setIdClasse($idClasse) {
-        $this->idClasse = $idClasse;
-    }
-
-    public function getLibClasse() {
-        return $this->libClasse;
-    }
-
-    public function setLibClasse($libClasse) {
-        $this->libClasse = $libClasse;
-    }
 
     // Methode enregistrer (Create)
     public function enregistrer($connexion) {
         // Préparer la requête SQL pour l'insertion
-        $requete = "INSERT INTO Classe (LibClasse) VALUES (:libClasse)";
+        $requete = "INSERT INTO `classe` (LibClasse) VALUES (:libClasse)";
         $stmt = $connexion->prepare($requete);
 
         // Lier les paramètres avec les valeurs
@@ -37,11 +21,14 @@ class Classe {
 
         // Exécuter la requête et vérifier si elle réussit
         if ($stmt->execute()) {
-            // Récupérer l'ID généré automatiquement pour la classe
-            $this->idClasse = $connexion->lastInsertId();
-            echo "Classe enregistrée avec succès ! ID: " . $this->idClasse . "\n";
+        
+            $message="Classe enregistrée avec succès ! ";
+            echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
         } else {
-            echo "Échec de l'enregistrement de la classe.\n";
+          
+            $message="Échec de l'enregistrement de la classe. ! ";
+            echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
+            
         }
     }
 

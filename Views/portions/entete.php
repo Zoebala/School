@@ -11,5 +11,6 @@
     <?php 
         require("Models/Connexion.php"); 
         require("Models/Option.class.php");
+        require("Models/Classe.class.php");
     ?>
     <div class="container text-center">

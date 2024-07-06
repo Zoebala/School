@@ -39,8 +39,10 @@
                             require("Views/Modification/updateOption.php"); //formOption
                             require("Views/Tables/optionTable.php");
                         break;
-
-
+                        case "classe":
+                            require("Views/Insertions/formClasse.php"); //formulaire classe
+                            require("Views/Tables/classeTable.php");
+                        break;
                         default:                        
                             require("Views/portions/about.php"); //apropos
                     
