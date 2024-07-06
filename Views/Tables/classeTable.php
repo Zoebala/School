@@ -3,7 +3,7 @@
         <h2 class="italic white underline">Liste des Classes</h2>  
         <?php
             if(isset($_GET["suppression"])){
-                $message="Suppression option effectuée avec succès!";
+                $message="Suppression classe effectuée avec succès!";
                 echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
                 unset($_GET["suppression"]);
             }
@@ -28,8 +28,8 @@
                     <td><?= $i; ?></td>
                     <td><?=$ligne["LibClasse"]; ?></td>
                     <td>
-                        <a href="Controllers/OptionController.php?DeleteId=<?= $ligne["IdClasse"] ?>" class="danger inline rounded">Supprimer</a>
-                        <a href="Controllers/OptionController.php?UpdateId=<?= $ligne["IdClasse"] ?>" class="warning inline rounded">Modifier</a>
+                        <a href="Controllers/ClasseController.php?DeleteId=<?= $ligne["IdClasse"] ?>" class="danger inline rounded">Supprimer</a>
+                        <a href="Controllers/ClasseController.php?UpdateId=<?= $ligne["IdClasse"] ?>" class="warning inline rounded">Modifier</a>
                     </td>
                 </tr>
                 <?php 

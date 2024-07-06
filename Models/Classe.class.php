@@ -51,19 +51,23 @@ class Classe {
     }
 
     // Methode supprimer (Delete)
-    public function supprimer($connexion) {
+    public function supprimer($connexion,$IdClasse) {
         // Préparer la requête SQL pour la suppression
-        $requete = "DELETE FROM Classe WHERE IdClasse = :idClasse";
+        $requete = "DELETE FROM `classe` WHERE IdClasse = :idClasse";
         $stmt = $connexion->prepare($requete);
 
         // Lier le paramètre avec la valeur
-        $stmt->bindParam(':idClasse', $this->idClasse);
+        $stmt->bindParam(':idClasse', $IdClasse);
 
         // Exécuter la requête et vérifier si elle réussit
         if ($stmt->execute()) {
-            echo "Classe supprimée avec succès ! ID: " . $this->idClasse . "\n";
+           
+            $message="Classe supprimée avec succès !";
+            echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
         } else {
-            echo "Échec de la suppression de la classe.\n";
+         
+            $message="Échec de la suppression de la classe!";
+            echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
         }
     }
 }
