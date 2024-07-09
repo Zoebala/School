@@ -2,7 +2,7 @@
 
 // require("../Models/Connexion.php");
 //chargement des classes et options sur le formulaire élève
-if(!isset($_GET["DeleteId"])){
+if(!isset($_GET["DeleteId"]) && !isset($_GET["UpdateId"])){
 
     $requete="SELECT * FROM `classe`";
     $resultat = $connexion->query($requete);
@@ -32,9 +32,8 @@ if( isset($_POST["btnAjoutEleve"]) && isset($_POST['classe']) && !empty($_POST['
     $datenais=htmlspecialchars($_POST['datenais']);
     $adresse=htmlspecialchars($_POST['adresse']);
    
-    $Option= new Eleve($matricule,$nom,$postnom,$prenom,$genre,$datenais,$adresse,$option,$classe);
-    $Option->enregistrer($connexion);
-    
+    $Eleve1= new Eleve($matricule,$nom,$postnom,$prenom,$genre,$datenais,$adresse,$option,$classe);
+    $Eleve1->enregistrer($connexion);
 }
 
 
@@ -50,3 +49,51 @@ if(isset($_GET["DeleteId"])){
     exit();
 }
 
+//Affichage Eleve à modifier
+if(isset($_GET["UpdateId"])){
+
+    require("../Models/Connexion.php");
+    require("../Models/Eleve.class.php");
+    $clef=$_GET["UpdateId"];
+                              
+    $requete="SELECT * FROM `eleve` as e JOIN `classe`as c ON e.IdClasse=c.IdClasse 
+                    JOIN `option` as o ON e.IdOption=o.IdOption WHERE e.IdEleve=$clef";
+    $resultat = $connexion->query($requete);
+    $ligne = $resultat->fetch();
+
+    $matricule=$ligne["Matricule"];
+    $Nom=$ligne["Nom"];
+    $postnom=$ligne["Postnom"];
+    $prenom=$ligne["Prenom"];
+    $genre=$ligne["Genre"];
+    $date=$ligne["Datenais"];
+    $adresse=$ligne["Adresse"];
+    $IdEleve=$ligne["IdEleve"];
+   
+
+    header("Location:../index.php?Matricule=$matricule&Nom=$Nom&Postnom=$postnom&Prenom=$prenom&Genre=$genre&Datenais=$date&Adresse=$adresse&IdEleve=$IdEleve&page=updateEleve#apropos");
+    exit();
+}
+
+//Modification proprement dite
+if( isset($_POST["btnUpdateEleve"]) && isset($_POST['classe']) && !empty($_POST['classe'])
+    && isset($_POST['option']) && !empty($_POST['option']) && isset($_POST["matricule"]) && !empty($_POST["matricule"])
+    && isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['postnom']) && !empty($_POST['postnom'])
+    && isset($_POST['prenom']) && !empty($_POST['prenom']) && isset($_POST['genre']) && !empty($_POST['genre']) 
+    && isset($_POST['datenais']) && !empty($_POST['datenais']) && isset($_POST['adresse']) && !empty($_POST["adresse"])
+   ){
+    $clef=$_POST["btnUpdateEleve"];       
+    $classe1=htmlspecialchars($_POST['classe']);
+    $option1=htmlspecialchars($_POST['option']);
+    $matricule1=htmlspecialchars($_POST['matricule']);
+    $nom1=htmlspecialchars($_POST['nom']);
+    $postnom1=htmlspecialchars($_POST['postnom']);
+    $prenom1=htmlspecialchars($_POST['prenom']);
+    $genre1=htmlspecialchars($_POST['genre']);
+    $datenais1=htmlspecialchars($_POST['datenais']);
+    $adresse1=htmlspecialchars($_POST['adresse']);
+   
+    $Eleve= new Eleve($matricule1,$nom1,$postnom1,$prenom1,$genre1,$datenais1,$adresse1,$option1,$classe1);
+    $Eleve->modifier($connexion,$clef);
+    
+}

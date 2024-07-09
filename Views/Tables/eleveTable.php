@@ -7,7 +7,7 @@
                 echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
                 unset($_GET["suppression"]);
             }
-            @require("controllers/EleveController.php");
+            // require("controllers/EleveController.php");
         ?>             
         <div style="display:flex; justify-content:center;">
 
@@ -41,8 +41,8 @@
                     </td> -->
                     <td><?= $ligne["Adresse"]; ?></td>
                     <td>
-                        <a href="Controllers/EleveController.php?DeleteId=<?= $ligne["Matricule"]; ?>" class="danger rounded">Supprimer</a>
-                        <a href="Controllers/EleveController.php?UpdateId=<?= $ligne["Matricule"]; ?>" class="warning rounded">Modifier</a>
+                        <a href="Controllers/EleveController.php?DeleteId=<?= $ligne["IdEleve"]; ?>" class="danger rounded">Supprimer</a>
+                        <a href="Controllers/EleveController.php?UpdateId=<?= $ligne["IdEleve"]; ?>" class="warning rounded">Modifier</a>
                     </td>
                 </tr>
                 <?php 

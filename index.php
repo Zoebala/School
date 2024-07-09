@@ -51,6 +51,10 @@
                             require("Views/Insertions/formEleve.php"); //formulaire eleve
                             require("Views/Tables/eleveTable.php");
                         break;
+                        case "updateEleve":
+                                require("Views/Modification/updateEleve.php"); //
+                                require("Views/Tables/eleveTable.php");
+                        break;
                         default:                        
                             require("Views/portions/about.php"); //apropos
                     

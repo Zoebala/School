@@ -7,7 +7,7 @@
                     
                     <form action="#apropos" method="post" >
                         <label for="classe" class="white">Classe :</label>
-                        <select name="classe" class="w-250 rounded p-1 mt-2" id="classe">
+                        <select name="classe" class="w-150 rounded p-1 mt-2" id="classe">
                             <?php
 
                               foreach($Classes as $Classe){
@@ -18,7 +18,7 @@
                             ?>
                         </select>
                         <label for="option" class="white">Option :</label>
-                        <select name="option" class="w-250 rounded p-1" id="option">
+                        <select name="option" class="w-150 rounded p-1" id="option">
                             <?php
 
                             foreach($Options as $Option){
@@ -28,13 +28,13 @@
                                 }
                             ?>
                         </select> <br>
-                        <input type="text" name="matricule" class="p-1 rounded w-250 mt-2" placeholder="saisissez votre matricule" required>
-                        <input type="text" name="nom" id="nom" class="p-1 rounded w-250" placeholder="saisissez votre nom" required>
+                        <input type="text" name="matricule" class="p-1 rounded w-150 mt-2" placeholder="saisissez votre matricule" required>
+                        <input type="text" name="nom" id="nom" class="p-1 rounded w-150" placeholder="saisissez votre nom" required>
                         <input type="text" name="postnom" id="postnom" class="p-1 rounded w-250" placeholder="saisissez votre postnom" required>
                         <input type="text" name="prenom" class="p-1 rounded w-250 mt-2" id="prenom" placeholder="saisissez votre prénom" required>
                         <input type="date" name="datenais" class="p-1 rounded w-250" id="datenais">
                         <input type="text" name="adresse" class="p-1 rounded w-250 mt-2" id="adresse" placeholder="Ex: 45, Av. mweneditu Q/Disengomoka" required>
-                        <select name="genre" id="genre" class="p-1 rounded w-250">
+                        <select name="genre" id="genre" class="p-1 rounded w-150 mt-1">
                             <option value="M">M</option>
                             <option value="F">F</option>
                         </select><br>

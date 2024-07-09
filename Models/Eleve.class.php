@@ -26,40 +26,41 @@ class Eleve {
 
    
 
-    // Methode enregistrer (Create)
-    public function enregistrer($connexion) {
-        // Préparer la requête SQL pour l'insertion
-        $requete = "INSERT INTO `eleve` (Matricule, Nom, Postnom, Prenom,genre, Datenais, Adresse, IdOption, IdClasse) VALUES (:matricule, :nom, :postnom, :prenom,:genre, :datenais, :adresse, :idOption, :idClasse)";
-        $stmt = $connexion->prepare($requete);
-
-        // Lier les paramètres avec les valeurs
-        $stmt->bindParam(':matricule', $this->matricule);
-        $stmt->bindParam(':nom', $this->nom);
-        $stmt->bindParam(':postnom', $this->postnom);
-        $stmt->bindParam(':prenom', $this->prenom);
-        $stmt->bindParam(':genre', $this->genre);
-        $stmt->bindParam(':datenais', $this->datenais);
-        $stmt->bindParam(':adresse', $this->adresse);
-        $stmt->bindParam(':idOption', $this->idOption);
-        $stmt->bindParam(':idClasse', $this->idClasse);
-
-        // Exécuter la requête et vérifier si elle réussit
-        if ($stmt->execute()) {
-            $message="Elève enregistré avec succès!";
-            echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
-        } else {           
-            $message="Échec de l'enregistrement de l'élève!";
-            echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
-        }
-    }    
-        // Methode modifier (Update)
-        public function modifier($connexion,$matricule) {
-            // Préparer la requête SQL pour la mise à jour
-            $requete = "UPDATE Eleve SET Nom = :nom, Postnom = :postnom, Prenom = :prenom,Genre=:genre ,Datenais = :datenais, Adresse = :adresse, IdOption = :idOption, IdClasse = :idClasse WHERE Matricule = :matricule";
+        // Methode enregistrer (Create)
+        public function enregistrer($connexion) {
+            // Préparer la requête SQL pour l'insertion
+            $requete = "INSERT INTO `eleve` (Matricule, Nom, Postnom, Prenom,genre, Datenais, Adresse, IdOption, IdClasse) VALUES (:matricule, :nom, :postnom, :prenom,:genre, :datenais, :adresse, :idOption, :idClasse)";
             $stmt = $connexion->prepare($requete);
-    
+
             // Lier les paramètres avec les valeurs
-            $stmt->bindParam(':matricule', $matricule);
+            $stmt->bindParam(':matricule', $this->matricule);
+            $stmt->bindParam(':nom', $this->nom);
+            $stmt->bindParam(':postnom', $this->postnom);
+            $stmt->bindParam(':prenom', $this->prenom);
+            $stmt->bindParam(':genre', $this->genre);
+            $stmt->bindParam(':datenais', $this->datenais);
+            $stmt->bindParam(':adresse', $this->adresse);
+            $stmt->bindParam(':idOption', $this->idOption);
+            $stmt->bindParam(':idClasse', $this->idClasse);
+
+            // Exécuter la requête et vérifier si elle réussit
+            if ($stmt->execute()) {
+                $message="Elève enregistré avec succès!";
+                echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
+            } else {           
+                $message="Échec de l'enregistrement de l'élève!";
+                echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
+            }
+        }    
+        // Methode modifier (Update)
+        public function modifier($connexion,$IdEleve) {
+            // Préparer la requête SQL pour la mise à jour
+            $requete = "UPDATE `eleve` SET Nom = :nom, Postnom = :postnom, Prenom = :prenom,Genre=:genre ,Datenais = :datenais, Adresse = :adresse, IdOption = :idOption, IdClasse = :idClasse,Matricule=:matricule WHERE IdEleve = :IdEleve";
+            $stmt = $connexion->prepare($requete);
+           
+            // Lier les paramètres avec les valeurs
+            $stmt->bindParam(':IdEleve', $IdEleve);
+            $stmt->bindParam(':matricule', $this->matricule);
             $stmt->bindParam(':nom', $this->nom);
             $stmt->bindParam(':postnom', $this->postnom);
             $stmt->bindParam(':prenom', $this->prenom);
@@ -71,27 +72,33 @@ class Eleve {
     
             // Exécuter la requête et vérifier si elle réussit
             if ($stmt->execute()) {
-                echo "Elève modifié avec succès ! Matricule: " . $matricule . "\n";
-            } else {
-                echo "Échec de la modification de l'élève.\n";
+                $message="Elève modifié avec succès !";
+                echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
+            } else {                
+                $message="Échec de la modification de l'élève !";
+                echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
             }
         }
     
         // Methode supprimer (Delete)
-        public function supprimer($connexion,$matricule) {
+        public function supprimer($connexion,$IdEleve) {
             // Préparer la requête SQL pour la suppression
-            $requete = "DELETE FROM Eleve WHERE Matricule = :matricule";
+            $requete = "DELETE FROM Eleve WHERE IdEleve = :IdEleve";
             $stmt = $connexion->prepare($requete);
     
             // Lier le paramètre avec la valeur
-            $stmt->bindParam(':matricule', $matricule);
+            $stmt->bindParam(':IdEleve', $IdEleve);
     
             // Exécuter la requête et vérifier si elle réussit
             if ($stmt->execute()) {
-                echo "Elève supprimé avec succès ! Matricule: " . $matricule . "\n";
+
+                $message="Elève supprimé avec succès !";
+                echo "<p style='text-align:center; padding:10px; background-color:green; font-style:italic;'>".$message."</p>";
             } else {
-                echo "Échec de la suppression de l'élève.\n";
+               
+                $message="Échec de la suppression de l'élève !";
+                echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
             }
         }
-    }
+}
     
