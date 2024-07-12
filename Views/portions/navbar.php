@@ -1,8 +1,8 @@
 <nav>
                 <div class="search">
-                    <form action="#" method="GET">
-                        <input type="search" class="rounded p-1 w-350" name="search" placeholder="Rechercher élève par" id="search">
-                        <select name="choix" id="choix" class="p-1 rounded">
+                    <form action="Controllers/EleveController.php" method="GET">
+                        <input type="search" class="rounded p-1 w-350" required name="search" placeholder="Rechercher élève par" id="search">
+                        <select name="choix" required id="choix" class="p-1 rounded">
                             <option value="classe">Classe</option>
                             <option value="option">Option</option>
                             <option value="nom" selected>Nom</option>

@@ -12,17 +12,17 @@ class Eleve {
     private $idOption;
     private $idClasse;
 
-    public function __construct($matricule, $nom, $postnom, $prenom,$genre, $datenais, $adresse, $idOption, $idClasse) {
-        $this->matricule = $matricule;
-        $this->nom = $nom;
-        $this->postnom = $postnom;
-        $this->prenom = $prenom;
-        $this->genre = $genre;
-        $this->datenais = $datenais;
-        $this->adresse = $adresse;
-        $this->idOption = $idOption;
-        $this->idClasse = $idClasse;
-    }
+        public function __construct($matricule, $nom, $postnom, $prenom,$genre, $datenais, $adresse, $idOption, $idClasse) {
+            $this->matricule = $matricule;
+            $this->nom = $nom;
+            $this->postnom = $postnom;
+            $this->prenom = $prenom;
+            $this->genre = $genre;
+            $this->datenais = $datenais;
+            $this->adresse = $adresse;
+            $this->idOption = $idOption;
+            $this->idClasse = $idClasse;
+        }
 
    
 
@@ -99,6 +99,35 @@ class Eleve {
                 $message="Échec de la suppression de l'élève !";
                 echo "<p style='text-align:center; padding:10px; background-color:red; font-style:italic;'>".$message."</p>";
             }
+        }
+        
+        //Rechercher élève par son nom
+        public function rechercherParNom($connexion,string $nom) {
+            $requete = "SELECT * FROM `eleve` as e JOIN `classe`as c ON e.IdClasse=c.IdClasse 
+                    JOIN `option` as o ON e.IdOption=o.IdOption WHERE Nom LIKE '%{$nom}%'";
+            $stmt = $connexion->prepare($requete);
+            // $stmt->bindParam(':nom', $nom);
+            $stmt->execute();
+            $resultats = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $resultats;
+        }
+        public function rechercherParOption($connexion, $option) {
+            $requete = "SELECT * FROM `eleve` as e JOIN `classe`as c ON e.IdClasse=c.IdClasse 
+                    JOIN `option` as o ON e.IdOption=o.IdOption WHERE LibOption LIKE '%{$option}%'";
+            $stmt = $connexion->prepare($requete);
+            // $stmt->bindParam(':opt', "%{$option}%");
+            $stmt->execute();
+            $resultats = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $resultats;
+        }
+        public function rechercherParClasse($connexion, $classe) {
+            $requete = "SELECT * FROM `eleve` as e JOIN `classe`as c ON e.IdClasse=c.IdClasse 
+                    JOIN `option` as o ON e.IdOption=o.IdOption WHERE LibClasse LIKE '%{$classe}%'";
+            $stmt = $connexion->prepare($requete);
+            // $stmt->bindParam(':classe', "%{$classe}%");
+            $stmt->execute();
+            $resultats = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $resultats;
         }
 }
     

@@ -1,7 +1,8 @@
 <section class="section1" id="apropos">
                 <h2 class="italic white underline">Ajout Elève</h2>
                 <?php
-                    require("controllers/EleveController.php");
+                    // if(!isset($_SESSION["eleve"]) && $_GET["page"]=="recherche")
+                         require("controllers/EleveController.php");
                 ?>
                 <div class="apropos text-center">                  
                     

@@ -1,6 +1,6 @@
 
 <section class="section2">
-        <h2 class="italic white underline">Liste des Elèves</h2>  
+        <h2 class="italic white underline">Liste de la Recherche</h2>  
         <?php
             if(isset($_GET["suppression"])){
                 $message="Suppression Elève effectuée avec succès!";
@@ -23,34 +23,39 @@
                     <th>Actions</th>
                 </tr>
                 <?php 
-                    $requete = "SELECT * FROM `eleve` as e JOIN `classe`as c ON e.IdClasse=c.IdClasse 
-                    JOIN `option` as o ON e.IdOption=o.IdOption";
                     
-                        $resultat = $connexion->query($requete);
-                   
+                  
+                    $resultat = $_SESSION["eleve"];
+                    
                     $i=1;
-                    if ($resultat->rowCount() > 0) {
-                        while ($ligne = $resultat->fetch()) {
+                    if (!isset($_GET['trouve'])) {
+                        foreach ($resultat as $r) {
                 ?>
                 <tr>
                     <td><?= $i; ?></td>
-                    <td><?=$ligne["LibClasse"]; ?></td>
-                    <td><?=$ligne["LibOption"]; ?></td>
-                    <td><?=$ligne["Nom"]." ".$ligne["Postnom"]." ".$ligne["Prenom"]; ?></td>
-                    <td><?=$ligne["Matricule"]; ?></td>
+                    <td><?=$r->LibClasse; ?></td>
+                    <td><?=$r->LibOption; ?></td>
+                    <td><?=$r->Nom." ".$r->Postnom." ".$r->Prenom; ?></td>
+                    <td><?=$r->Matricule; ?></td>
                     <!-- <td>
                         
                     </td> -->
                     
                     <td>
-                        <a href="Controllers/EleveController.php?DeleteId=<?= $ligne["IdEleve"]; ?>" class="danger rounded">Supprimer</a>
-                        <a href="Controllers/EleveController.php?UpdateId=<?= $ligne["IdEleve"]; ?>" class="warning rounded">Modifier</a>
+                        <a href="Controllers/EleveController.php?DeleteId=<?= $r->IdEleve; ?>" class="danger rounded">Supprimer</a>
+                        <a href="Controllers/EleveController.php?UpdateId=<?= $r->IdEleve; ?>" class="warning rounded">Modifier</a>
                     </td>
                 </tr>
                 <?php 
                     $i+=1;
                     }
-                   
+                  
+                }else{
+                ?>
+                    <tr>
+                        <td colspan="6" class="italic">Aucune donnée trouvée</td>
+                    </tr>
+                <?php
                 }
                 ?>
             </table>

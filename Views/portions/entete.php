@@ -9,10 +9,13 @@
 </head>
 <body>
     <?php 
+       
         //inclusion des classes
+        session_start();
         require("Models/Connexion.php"); 
         require("Models/Option.class.php");
         require("Models/Classe.class.php");
         require("Models/Eleve.class.php");
+        require("controllers/EleveController.php");
     ?>
     <div class="container text-center">

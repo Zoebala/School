@@ -1,5 +1,61 @@
 <?php
+//Recherche de l'élève
+if(isset($_GET["search"]) && $_GET["choix"]){
+    session_start();
+    require("../Models/Connexion.php");
+    require("../Models/Eleve.class.php");
+    switch($_GET["choix"]){
+        case "option":
+            $nom=strip_tags($_GET["search"]);
+            $Eleve=new Eleve("","","","","","","","","");
+            $_SESSION["eleve"]=$Eleve->rechercherParOption($connexion,$nom);
+            // echo "<pre>";
+            // print_r($_SESSION['eleve']);
+            // echo "</pre>";die;
+            if($_SESSION["eleve"]){
+                header("location:../index.php?page=recherche#apropos");
+                exit();
+            }else{
+                $trouver=false;                
+                header("location:../index.php?trouve=$trouver&page=recherche#apropos");
+                exit();               
+            }
+            
 
+        break;
+        case "nom":
+            $nom=strip_tags($_GET["search"]);
+            $Eleve=new Eleve("","","","","","","","","");
+            $_SESSION["eleve"]=$Eleve->rechercherParNom($connexion,$nom);
+            // echo "<pre>";
+            // print_r($_SESSION['eleve']);
+            // echo "</pre>";die;
+            if($_SESSION["eleve"]){
+                header("location:../index.php?page=recherche#apropos");
+                exit();
+            }else{
+                $trouver=false;                
+                header("location:../index.php?trouve=$trouver&page=recherche#apropos");
+                exit();               
+            }          
+        break;
+        case "classe":
+            $nom=strip_tags($_GET["search"]);
+            $Eleve=new Eleve("","","","","","","","","");
+            $_SESSION["eleve"]=$Eleve->rechercherParClasse($connexion,$nom);
+            if($_SESSION["eleve"]){
+                header("location:../index.php?page=recherche#apropos");
+                exit();
+            }else{
+                $trouver=false;                
+                header("location:../index.php?trouve=$trouver&page=recherche#apropos");
+                exit();               
+            }
+            
+            
+        break;
+    }
+}
 // require("../Models/Connexion.php");
 //chargement des classes et options sur le formulaire élève
 if(!isset($_GET["DeleteId"]) && !isset($_GET["UpdateId"])){
@@ -97,3 +153,4 @@ if( isset($_POST["btnUpdateEleve"]) && isset($_POST['classe']) && !empty($_POST[
     $Eleve->modifier($connexion,$clef);
     
 }
+
